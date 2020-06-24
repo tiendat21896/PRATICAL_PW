@@ -14,18 +14,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
 <div class=container>
@@ -33,17 +21,17 @@
     <form id="contactForm">
         <div class="form-group">
             <label><b>Student Name</b></label>
-            <input type="text" name="student_name" class="form-control"  id="name">
+            <input type="text" name="student_name" class="form-control"  id="student_name">
         </div>
 
         <div class="form-group">
             <label><b>Student Email</b></label>
-            <input type="text" name="student_email" class="form-control"  id="email">
+            <input type="text" name="student_email" class="form-control"  id="student_email">
         </div>
 
         <div class="form-group">
             <label><b>Student Telephone</b></label>
-            <input type="text" name="student_telephone" class="form-control"  id="telephone">
+            <input type="text" name="student_telephone" class="form-control"  id="student_telephone">
         </div>
 
         <div class="form-group">
@@ -78,7 +66,8 @@
                 feedback:feedback,
             },
             success:function(response){
-                console.log(response);
+                alert('Send form success');
+                $("#contactForm")[0].reset();
             },
         });
     });

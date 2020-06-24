@@ -13,4 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/","WebController@index");
+Route::get('/', function () {
+    return view('Survey_Student');
+});
+
+Route::get("/survey","WebController@survey");
+Route::post('/survey', 'WebController@saveSurvey');

@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
-    public function index(){
-        return view("Survey_Student");
+    public function survey(){
+        return view("survey_student");
     }
 
     public function saveSurvey(Request $request){
@@ -19,6 +19,7 @@ class WebController extends Controller
        $survey->student_telephone = $request->student_telephone;
        $survey->feedback = $request->feedback;
        $survey->save();
+
        return response()->json(['success'=>'Form is successfully submited!!!']);
     }
 }
