@@ -9,9 +9,9 @@ class Survey extends Model
     protected $table = "students";
 
     public $fillable = [
-        "Student_Name",
-        "Student_Email",
-        "Student_Telephone",
-        "Feedback"
+        "student_name",
+        "student_email",
+        "student_telephone",
+        "feedback"
     ];
 }

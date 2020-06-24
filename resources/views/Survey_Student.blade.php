@@ -30,34 +30,56 @@
 <body>
 <div class=container>
     <h1 style="text-align: center">SURVEY STUDENT</h1>
-    <form>
+    <form id="contactForm">
         <div class="form-group">
-            <label for="exampleInputEmail1"><b>Student Name</b></label>
-            <input type="name" class="form-control" id="exampleInputName" aria-describedby="Student_Name" p>
-            <small id="emailHelp" class="form-text text-muted"></small>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1"><b>Student Email</b></label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="Student_Email" >
-            <small id="emailHelp" class="form-text text-muted"></small>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1"><b>Student Telephone</b></label>
-            <input type="telephone" class="form-control" id="exampleInputEmail1" aria-describedby="Student_Telephone" >
-            <small id="emailHelp" class="form-text text-muted"></small>
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1"><b>Feedback</b></label>
-            <textarea style="height:200px" type="feedback" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label><b>Student Name</b></label>
+            <input type="text" name="student_name" class="form-control"  id="name">
         </div>
 
-        <button type="submit" class="btn btn btn-success">Submit</button>
+        <div class="form-group">
+            <label><b>Student Email</b></label>
+            <input type="text" name="student_email" class="form-control"  id="email">
+        </div>
+
+        <div class="form-group">
+            <label><b>Student Telephone</b></label>
+            <input type="text" name="student_telephone" class="form-control"  id="telephone">
+        </div>
+
+        <div class="form-group">
+            <label><b>Feedback</b></label>
+            <textarea class="form-control" name="feedback"  id="feedback"></textarea>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" id="submit">Submit</button>
+        </div>
     </form>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#formoid').ajaxForm(function() {
-            alert("Thank you for your comment!");
+
+    $('#contactForm').on('submit',function(event){
+        event.preventDefault();
+
+        student_name = $('#student_name').val();
+        student_email = $('#student_email').val();
+        student_telephone = $('#student_telephone').val();
+        feedback = $('#feedback').val();
+
+        $.ajax({
+            url: "/survey",
+            type:"POST",
+            data:{
+                "_token": "{{ csrf_token() }}",
+                student_name:student_name,
+                student_email:student_email,
+                student_telephone:student_telephone,
+                feedback:feedback,
+            },
+            success:function(response){
+                console.log(response);
+            },
         });
     });
 </script>
